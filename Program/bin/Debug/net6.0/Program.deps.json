@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Program/1.0.0": {
         "dependencies": {
+          "Application": "1.0.0",
           "Infrastructure": "1.0.0",
           "MQTTnet": "4.1.4.563",
           "MQTTnet.Extensions.ManagedClient": "4.1.4.563",
@@ -402,6 +403,16 @@
           }
         }
       },
+      "Application/1.0.0": {
+        "dependencies": {
+          "Infrastructure": "1.0.0",
+          "MQTTnet": "4.1.4.563",
+          "MQTTnet.Extensions.ManagedClient": "4.1.4.563"
+        },
+        "runtime": {
+          "Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "runtime": {
           "Domain.dll": {}
@@ -613,6 +624,11 @@
       "sha512": "sha512-s/llr/mWK+yc0KWHGvVWqgervD32hsTlXykrvvfE/9O4cCsUErWqQ+ZnbIbKTqShGn3YfruBED5uZMoYOOzAYw==",
       "path": "system.text.json/8.0.0-preview.1.23110.8",
       "hashPath": "system.text.json.8.0.0-preview.1.23110.8.nupkg.sha512"
+    },
+    "Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Domain/1.0.0": {
       "type": "project",

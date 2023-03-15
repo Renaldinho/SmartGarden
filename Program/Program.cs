@@ -1,6 +1,7 @@
 ﻿
 
 using System.Text;
+using Application;
 using Domain;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ using MQTTnet.Client;
         IMqttClient Client = mqttFactory.CreateMqttClient();
         var options = new MqttClientOptionsBuilder()
             .WithClientId(Guid.NewGuid().ToString())
-            .WithCredentials("t4g3xaH7YwIeQHhcnqevWzRQtjme7jWqb2jy1QtPaZUPw1RHgV10jIGASQCNZo2Y", "")
+            .WithCredentials("UGUQ9A0yCU69KVI1u4WDSLeioenQp5R9zzNyZEWqmQpWAWNUOxmw9qClsP2FIHF7", "")
             .WithTcpServer("mqtt.flespi.io", 1883)
             .WithCleanSession()
             .Build();
@@ -24,26 +25,25 @@ using MQTTnet.Client;
         async Task SubscribeToTopic(IMqttClient client)
         {
             var topicFilter = new MqttTopicFilterBuilder()
-                .WithTopic("my/topic")
+                .WithTopic("SmartGarden/#")
                 .Build();
             await client.SubscribeAsync(topicFilter);
-
-            client.ApplicationMessageReceivedAsync += (sender) => SubscriptionCallback(sender);
+            
+            var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
+            optionsBuilder.UseSqlite("Data source=db.db");
+            var db = new DatabaseContext(optionsBuilder.Options);
+            db.Database.EnsureCreated();
+            MessageHandler messageHandler = new MessageHandler(db);
+            
+            client.ApplicationMessageReceivedAsync += (sender) => SubscriptionCallback(sender,messageHandler);
+            
+            
+        
         }
         
-        static Task SubscriptionCallback(MqttApplicationMessageReceivedEventArgs sender)
+        static Task SubscriptionCallback(MqttApplicationMessageReceivedEventArgs sender, MessageHandler messageHandler)
         {
-            Console.WriteLine(Encoding.UTF8.GetString(sender.ApplicationMessage.Payload));
-            var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
-            using (var db = new DatabaseContext(optionsBuilder.Options))
-            {
-                Console.Write(db.TemperatureReadings.Add(new TemperatureReading()
-                {
-                    ReadingTime = DateTime.Now,
-                    Value = Double.Parse(Encoding.UTF8.GetString(sender.ApplicationMessage.Payload).ToString()),
-                    Id = -1
-                }).Entity.Value);
-            }
+            messageHandler.HandleMessage(sender);
             return Task.CompletedTask;
         }
     });
@@ -51,6 +51,7 @@ using MQTTnet.Client;
     var dbThread = new Thread(() =>
     {
         var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
+        optionsBuilder.UseSqlite("Data source=db.db");
         using (var db = new DatabaseContext(optionsBuilder.Options))
         {
             db.Database.EnsureCreated();

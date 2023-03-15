@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\Domain.csproj": {}
+    "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\Domain.csproj": {
+    "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config"

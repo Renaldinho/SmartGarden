@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q5yCpsD4OBY+AZY3UymuN22BJb4wbEjbAzcy6VR5wxEUMw31V8hfZ67Jw8o1UDipWwAFSxkY8dLrwyAj4nLMTQ==",
+  "dgSpecHash": "JtxOnWaDCngteReggUaUKS9ddC+wD0UCjgv/WSELzfgeW1NWoDO33pPRSvdZiIN8C8vZvi+n8cdjn9snw8Ah0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Program\\Program.csproj",
+  "projectFilePath": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Program\\Program.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.0-preview.1.23111.4\\microsoft.data.sqlite.core.8.0.0-preview.1.23111.4.nupkg.sha512",
     "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0-preview.1.23111.4\\microsoft.entityframeworkcore.8.0.0-preview.1.23111.4.nupkg.sha512",

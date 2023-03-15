@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jo9CXXXlDS3PakxOInbBDHc9Q/4Y3C0S42dqZyfHmhX5RYtSMHobMq9VGse0wND1OrKRo6xJYos8tgSo+/a4WQ==",
+  "dgSpecHash": "K1cmz4C3v5rhNH2x7Wi5SwBOovHlZT6TCl6kyK8995z67xWOEk1L3oa/8daWdIVPuRRkuGGkNL+fslG4L6ZaDg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

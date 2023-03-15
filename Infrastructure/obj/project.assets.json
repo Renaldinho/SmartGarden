@@ -1137,11 +1137,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1156,8 +1156,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Bruger\\RiderProjects\\WebApplication1\\Domain\\Domain.csproj"
+            "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Bruger\\Documents\\GitHub\\SmartGarden\\Domain\\Domain.csproj"
             }
           }
         }
