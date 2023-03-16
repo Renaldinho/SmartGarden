@@ -36,9 +36,17 @@ using MQTTnet.Client;
             MessageHandler messageHandler = new MessageHandler(db);
             
             client.ApplicationMessageReceivedAsync += (sender) => SubscriptionCallback(sender,messageHandler);
-            
-            
-        
+
+            Thread publisherThread = new Thread(async () =>
+            {
+                MessagePublisher publisher = new MessagePublisher(client, db);
+                while (true)
+                {
+                    await publisher.PublishMessageUpdateAsync();
+                    Thread.Sleep(10000);
+                }
+            });
+            publisherThread.Start();
         }
         
         static Task SubscriptionCallback(MqttApplicationMessageReceivedEventArgs sender, MessageHandler messageHandler)
@@ -57,7 +65,8 @@ using MQTTnet.Client;
             db.Database.EnsureCreated();
             while (true)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(10000);
+                
             }
         }
     });
