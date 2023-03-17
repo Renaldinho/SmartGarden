@@ -3,6 +3,6 @@
 public class TemperatureReading
 {
     public int Id { get; set; }
-    public Double Value { get; set; }
+    public float Value { get; set; }
     public DateTime ReadingTime { get; set; }
 }

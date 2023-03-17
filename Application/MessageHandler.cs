@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using Domain;
 using Infrastructure.Database;
 using MQTTnet.Client;
@@ -22,20 +23,11 @@ public class MessageHandler
 
     public void HandleMessage(MqttApplicationMessageReceivedEventArgs sender)
     {
-        /*
-        Console.WriteLine($"amount of readings: {DatabaseContext.TemperatureReadings.ToArray().Length}");
-        Console.WriteLine(sender.ApplicationMessage.Topic);
-        Console.WriteLine(DatabaseContext.TemperatureReadings.Add(new TemperatureReading()
-        {
-            ReadingTime = DateTime.Now,
-            Value = Double.Parse(Encoding.UTF8.GetString(sender.ApplicationMessage.Payload).ToString())
-        }).Entity.Value);
-        DatabaseContext.SaveChangesAsync();
-        */
+        
         string topic = sender.ApplicationMessage.Topic;
         if (topic.Equals(TemperatureTopic))
         {
-            Console.WriteLine("MAtches with temp");
+            CreateTemperatureReading(sender);
         }
         else if (topic.Equals(AirTopic))
         {
@@ -47,6 +39,17 @@ public class MessageHandler
         }
 
     }
+
+    private void CreateTemperatureReading(
+        MqttApplicationMessageReceivedEventArgs sender)
+    {
+        float reading = float.Parse(Encoding.UTF8.GetString(sender.ApplicationMessage.Payload),CultureInfo.InvariantCulture);
+        Console.WriteLine(DatabaseContext.TemperatureReadings.Add(new TemperatureReading()
+        {
+            ReadingTime = DateTime.Now,
+            Value = reading
+        }).Entity.Value);
+        DatabaseContext.SaveChangesAsync();
         
-        
+    }
 }

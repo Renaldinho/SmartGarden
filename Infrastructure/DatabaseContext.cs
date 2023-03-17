@@ -27,7 +27,7 @@ public class DatabaseContext: DbContext
         modelBuilder.Entity<TemperatureReading>().HasData(new TemperatureReading()
         {
             ReadingTime = DateTime.Now,
-            Value = 5,
+            Value = 25,
             Id = -1
         });
     }

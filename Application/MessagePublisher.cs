@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Text.Json;
+using Domain;
 using Infrastructure.Database;
 using MQTTnet;
 using MQTTnet.Client;
@@ -21,18 +22,19 @@ public class MessagePublisher
     {
         try
         {
-            TemperatureReading latestTempReading = DatabaseContext.TemperatureReadings.ToArray().LastOrDefault();
-            String messagePayload = latestTempReading.Value.ToString();
+            var readingsOfTheLastHour =
+                DatabaseContext.TemperatureReadings.Where(tr => tr.ReadingTime.AddHours(1) > DateTime.Now);
+            var averageTempLastHour = readingsOfTheLastHour.Average(tr => tr.Value);
+            String messagePayload = averageTempLastHour.ToString();
             var message = new MqttApplicationMessageBuilder()
-                .WithTopic("my/topic")
-                .WithPayload(messagePayload)
+                .WithTopic("SmartGarden/ReadingUpdate/Temperature")
+                .WithPayload(String.Format("{0:0.00}°C",averageTempLastHour))
                 .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                 .Build();
             if (Client.IsConnected)
             {
                 await Client.PublishAsync(message);
             }
-            Console.WriteLine(messagePayload);
         }
         catch (Exception e)
         {

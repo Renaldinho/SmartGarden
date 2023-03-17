@@ -32,7 +32,6 @@ using MQTTnet.Client;
             var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
             optionsBuilder.UseSqlite("Data source=db.db");
             var db = new DatabaseContext(optionsBuilder.Options);
-            db.Database.EnsureCreated();
             MessageHandler messageHandler = new MessageHandler(db);
             
             client.ApplicationMessageReceivedAsync += (sender) => SubscriptionCallback(sender,messageHandler);
@@ -72,9 +71,9 @@ using MQTTnet.Client;
     });
     
     // Start both threads
-    mqttThread.Start();
-    dbThread.Start();
     
+    dbThread.Start();
+    mqttThread.Start();
     Console.Write("started");
 
     // Wait for both threads to complete
